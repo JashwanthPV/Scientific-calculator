@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: green;
+        }
+        .error {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scientific Calculator</h1>
+    <form method="POST">
+        <input type="text" name="expression" value="{{ expression }}" placeholder="Enter expression (e.g., sin(30), sqrt(16))">
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <div class="result">Result: {{ result }}</div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <h3>Supported Functions</h3>
+    <ul>
+        <li>Basic Operators: +, -, *, /</li>
+        <li>Scientific: sqrt(x), sin(x), cos(x), tan(x), log(x), pow(x, y)</li>
+        <li>Constants: pi, e</li>
+    </ul>
+</body>
+</html>
